@@ -3,7 +3,7 @@
  * -----------------------------------------
  * Application Name  : Palindrome Checker App
  * Version           : 1.0
- * Description       : Displays welcome message and checks a hardcoded palindrome.
+ * Description       : Demonstrates UC1, UC2 and UC3 combined.
  */
 
 public class PalindromeCheckerApp {
@@ -23,27 +23,28 @@ public class PalindromeCheckerApp {
         System.out.println("======================================");
 
         // =============================
-        // UC2 - Hardcoded Palindrome Check
+        // UC2 - Hardcoded String
         // =============================
-
-        // Hardcoded String Literal
         String word = "madam";
 
-        // Variable to store reversed string
+        // =============================
+        // UC3 - Reverse Using Loop
+        // =============================
         String reversed = "";
 
-        // Reverse the string
         for (int i = word.length() - 1; i >= 0; i--) {
             reversed = reversed + word.charAt(i);
         }
 
-        System.out.println("\nChecking word: " + word);
+        // Display Original & Reversed
+        System.out.println("\nOriginal Word  : " + word);
+        System.out.println("Reversed Word  : " + reversed);
 
-        // Check if palindrome using if-else
+        // Compare using equals()
         if (word.equals(reversed)) {
-            System.out.println("Result: The given word is a Palindrome.");
+            System.out.println("Result : The given word is a Palindrome.");
         } else {
-            System.out.println("Result: The given word is NOT a Palindrome.");
+            System.out.println("Result : The given word is NOT a Palindrome.");
         }
 
         System.out.println("\nProgram Exited Successfully.");
