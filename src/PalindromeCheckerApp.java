@@ -3,12 +3,13 @@
  * -----------------------------------------
  * Application Name  : Palindrome Checker App
  * Version           : 1.0
- * Description       : Demonstrates UC1, UC2, UC3 and UC4 combined.
+ * Description       : Demonstrates UC1 to UC5 combined.
  */
+
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
-    // Main Method - Entry point of the Java Application
     public static void main(String[] args) {
 
         // =============================
@@ -26,7 +27,6 @@ public class PalindromeCheckerApp {
         // UC2 - Hardcoded String
         // =============================
         String word = "madam";
-
         System.out.println("\nHardcoded Word : " + word);
 
         // =============================
@@ -38,13 +38,13 @@ public class PalindromeCheckerApp {
             reversed = reversed + word.charAt(i);
         }
 
-        System.out.println("\n[UC3] Using String Reverse Logic");
+        System.out.println("\n[UC3] Using String Reverse Method");
         System.out.println("Reversed Word : " + reversed);
 
         if (word.equals(reversed)) {
-            System.out.println("Result : Palindrome (Using Reverse Method)");
+            System.out.println("Result : Palindrome (Reverse Method)");
         } else {
-            System.out.println("Result : Not a Palindrome (Using Reverse Method)");
+            System.out.println("Result : Not a Palindrome (Reverse Method)");
         }
 
         // =============================
@@ -53,11 +53,11 @@ public class PalindromeCheckerApp {
         char[] characters = word.toCharArray();
         int start = 0;
         int end = characters.length - 1;
-        boolean isPalindrome = true;
+        boolean isPalindromeChar = true;
 
         while (start < end) {
             if (characters[start] != characters[end]) {
-                isPalindrome = false;
+                isPalindromeChar = false;
                 break;
             }
             start++;
@@ -65,10 +65,35 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("\n[UC4] Using Character Array (Two-Pointer)");
-        if (isPalindrome) {
-            System.out.println("Result : Palindrome (Using Char Array Method)");
+        if (isPalindromeChar) {
+            System.out.println("Result : Palindrome (Char Array Method)");
         } else {
-            System.out.println("Result : Not a Palindrome (Using Char Array Method)");
+            System.out.println("Result : Not a Palindrome (Char Array Method)");
+        }
+
+        // =============================
+        // UC5 - Stack Based Method
+        // =============================
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
+
+        boolean isPalindromeStack = true;
+
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != stack.pop()) {
+                isPalindromeStack = false;
+                break;
+            }
+        }
+
+        System.out.println("\n[UC5] Using Stack (LIFO)");
+        if (isPalindromeStack) {
+            System.out.println("Result : Palindrome (Stack Method)");
+        } else {
+            System.out.println("Result : Not a Palindrome (Stack Method)");
         }
 
         System.out.println("\nProgram Exited Successfully.");
