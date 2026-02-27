@@ -1,13 +1,15 @@
 /**
  * PalindromeCheckerApp
  * -----------------------------------------
- * Combined Implementation of UC1 to UC6
- * Demonstrates multiple palindrome checking techniques.
+ * Final Combined Implementation of UC1 to UC7
+ * Demonstrates multiple palindrome validation techniques.
  */
 
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 public class PalindromeCheckerApp {
 
@@ -19,9 +21,9 @@ public class PalindromeCheckerApp {
         System.out.println("======================================");
         System.out.println("        PALINDROME CHECKER APP        ");
         System.out.println("======================================");
-        System.out.println("Application Version : 2.0");
+        System.out.println("Application Version : 3.0");
         System.out.println("--------------------------------------");
-        System.out.println("Program Started Successfully!");
+        System.out.println("All Use Cases (UC1 - UC7)");
         System.out.println("======================================");
 
         // =============================
@@ -41,12 +43,8 @@ public class PalindromeCheckerApp {
 
         System.out.println("\n[UC3] Reverse Using Loop");
         System.out.println("Reversed Word : " + reversed);
-
-        if (word.equals(reversed)) {
-            System.out.println("Result : Palindrome (Reverse Method)");
-        } else {
-            System.out.println("Result : Not a Palindrome (Reverse Method)");
-        }
+        System.out.println("Result : " +
+                (word.equals(reversed) ? "Palindrome" : "Not a Palindrome"));
 
         // =============================
         // UC4 - Character Array (Two Pointer)
@@ -66,11 +64,8 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("\n[UC4] Character Array (Two-Pointer)");
-        if (isPalindromeChar) {
-            System.out.println("Result : Palindrome (Char Array Method)");
-        } else {
-            System.out.println("Result : Not a Palindrome (Char Array Method)");
-        }
+        System.out.println("Result : " +
+                (isPalindromeChar ? "Palindrome" : "Not a Palindrome"));
 
         // =============================
         // UC5 - Stack Based Method
@@ -91,11 +86,8 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("\n[UC5] Stack (LIFO)");
-        if (isPalindromeStack) {
-            System.out.println("Result : Palindrome (Stack Method)");
-        } else {
-            System.out.println("Result : Not a Palindrome (Stack Method)");
-        }
+        System.out.println("Result : " +
+                (isPalindromeStack ? "Palindrome" : "Not a Palindrome"));
 
         // =============================
         // UC6 - Queue + Stack Method
@@ -105,8 +97,8 @@ public class PalindromeCheckerApp {
 
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-            queue.add(ch);      // Enqueue (FIFO)
-            stack2.push(ch);    // Push (LIFO)
+            queue.add(ch);
+            stack2.push(ch);
         }
 
         boolean isPalindromeQueueStack = true;
@@ -119,11 +111,30 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("\n[UC6] Queue (FIFO) + Stack (LIFO)");
-        if (isPalindromeQueueStack) {
-            System.out.println("Result : Palindrome (Queue + Stack Method)");
-        } else {
-            System.out.println("Result : Not a Palindrome (Queue + Stack Method)");
+        System.out.println("Result : " +
+                (isPalindromeQueueStack ? "Palindrome" : "Not a Palindrome"));
+
+        // =============================
+        // UC7 - Deque Based Method
+        // =============================
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for (int i = 0; i < word.length(); i++) {
+            deque.addLast(word.charAt(i));
         }
+
+        boolean isPalindromeDeque = true;
+
+        while (deque.size() > 1) {
+            if (deque.removeFirst() != deque.removeLast()) {
+                isPalindromeDeque = false;
+                break;
+            }
+        }
+
+        System.out.println("\n[UC7] Deque (Front & Rear Comparison)");
+        System.out.println("Result : " +
+                (isPalindromeDeque ? "Palindrome" : "Not a Palindrome"));
 
         System.out.println("\n======================================");
         System.out.println("All Use Cases Executed Successfully!");
