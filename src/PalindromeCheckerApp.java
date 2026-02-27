@@ -3,7 +3,7 @@
  * -----------------------------------------
  * Application Name  : Palindrome Checker App
  * Version           : 1.0
- * Description       : Demonstrates UC1, UC2 and UC3 combined.
+ * Description       : Demonstrates UC1, UC2, UC3 and UC4 combined.
  */
 
 public class PalindromeCheckerApp {
@@ -27,6 +27,8 @@ public class PalindromeCheckerApp {
         // =============================
         String word = "madam";
 
+        System.out.println("\nHardcoded Word : " + word);
+
         // =============================
         // UC3 - Reverse Using Loop
         // =============================
@@ -36,15 +38,37 @@ public class PalindromeCheckerApp {
             reversed = reversed + word.charAt(i);
         }
 
-        // Display Original & Reversed
-        System.out.println("\nOriginal Word  : " + word);
-        System.out.println("Reversed Word  : " + reversed);
+        System.out.println("\n[UC3] Using String Reverse Logic");
+        System.out.println("Reversed Word : " + reversed);
 
-        // Compare using equals()
         if (word.equals(reversed)) {
-            System.out.println("Result : The given word is a Palindrome.");
+            System.out.println("Result : Palindrome (Using Reverse Method)");
         } else {
-            System.out.println("Result : The given word is NOT a Palindrome.");
+            System.out.println("Result : Not a Palindrome (Using Reverse Method)");
+        }
+
+        // =============================
+        // UC4 - Character Array Method
+        // =============================
+        char[] characters = word.toCharArray();
+        int start = 0;
+        int end = characters.length - 1;
+        boolean isPalindrome = true;
+
+        while (start < end) {
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
+        }
+
+        System.out.println("\n[UC4] Using Character Array (Two-Pointer)");
+        if (isPalindrome) {
+            System.out.println("Result : Palindrome (Using Char Array Method)");
+        } else {
+            System.out.println("Result : Not a Palindrome (Using Char Array Method)");
         }
 
         System.out.println("\nProgram Exited Successfully.");
