@@ -1,12 +1,13 @@
 /**
  * PalindromeCheckerApp
  * -----------------------------------------
- * Application Name  : Palindrome Checker App
- * Version           : 1.0
- * Description       : Demonstrates UC1 to UC5 combined.
+ * Combined Implementation of UC1 to UC6
+ * Demonstrates multiple palindrome checking techniques.
  */
 
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
 
@@ -18,7 +19,7 @@ public class PalindromeCheckerApp {
         System.out.println("======================================");
         System.out.println("        PALINDROME CHECKER APP        ");
         System.out.println("======================================");
-        System.out.println("Application Version : 1.0");
+        System.out.println("Application Version : 2.0");
         System.out.println("--------------------------------------");
         System.out.println("Program Started Successfully!");
         System.out.println("======================================");
@@ -27,7 +28,7 @@ public class PalindromeCheckerApp {
         // UC2 - Hardcoded String
         // =============================
         String word = "madam";
-        System.out.println("\nHardcoded Word : " + word);
+        System.out.println("\nInput Word : " + word);
 
         // =============================
         // UC3 - Reverse Using Loop
@@ -38,7 +39,7 @@ public class PalindromeCheckerApp {
             reversed = reversed + word.charAt(i);
         }
 
-        System.out.println("\n[UC3] Using String Reverse Method");
+        System.out.println("\n[UC3] Reverse Using Loop");
         System.out.println("Reversed Word : " + reversed);
 
         if (word.equals(reversed)) {
@@ -48,7 +49,7 @@ public class PalindromeCheckerApp {
         }
 
         // =============================
-        // UC4 - Character Array Method
+        // UC4 - Character Array (Two Pointer)
         // =============================
         char[] characters = word.toCharArray();
         int start = 0;
@@ -64,7 +65,7 @@ public class PalindromeCheckerApp {
             end--;
         }
 
-        System.out.println("\n[UC4] Using Character Array (Two-Pointer)");
+        System.out.println("\n[UC4] Character Array (Two-Pointer)");
         if (isPalindromeChar) {
             System.out.println("Result : Palindrome (Char Array Method)");
         } else {
@@ -89,14 +90,43 @@ public class PalindromeCheckerApp {
             }
         }
 
-        System.out.println("\n[UC5] Using Stack (LIFO)");
+        System.out.println("\n[UC5] Stack (LIFO)");
         if (isPalindromeStack) {
             System.out.println("Result : Palindrome (Stack Method)");
         } else {
             System.out.println("Result : Not a Palindrome (Stack Method)");
         }
 
-        System.out.println("\nProgram Exited Successfully.");
+        // =============================
+        // UC6 - Queue + Stack Method
+        // =============================
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack2 = new Stack<>();
+
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            queue.add(ch);      // Enqueue (FIFO)
+            stack2.push(ch);    // Push (LIFO)
+        }
+
+        boolean isPalindromeQueueStack = true;
+
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack2.pop()) {
+                isPalindromeQueueStack = false;
+                break;
+            }
+        }
+
+        System.out.println("\n[UC6] Queue (FIFO) + Stack (LIFO)");
+        if (isPalindromeQueueStack) {
+            System.out.println("Result : Palindrome (Queue + Stack Method)");
+        } else {
+            System.out.println("Result : Not a Palindrome (Queue + Stack Method)");
+        }
+
+        System.out.println("\n======================================");
+        System.out.println("All Use Cases Executed Successfully!");
         System.out.println("======================================");
     }
 }
