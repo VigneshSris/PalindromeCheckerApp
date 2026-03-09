@@ -141,3 +141,29 @@ public class PalindromeCheckerApp {
         System.out.println("======================================");
     }
 }
+
+// =============================
+// UC8 - LinkedList Based Method
+// =============================
+LinkedList<Character> list = new LinkedList<>();
+
+        for (int i = 0; i < word.length(); i++) {
+        list.add(word.charAt(i));
+        }
+
+boolean isPalindromeLinkedList = true;
+
+        while (list.size() > 1) {
+
+char first = list.removeFirst();
+char last = list.removeLast();
+
+            if (first != last) {
+isPalindromeLinkedList = false;
+        break;
+        }
+        }
+
+        System.out.println("\n[UC8] LinkedList (removeFirst & removeLast)");
+        System.out.println("Result : " +
+                                   (isPalindromeLinkedList ? "Palindrome" : "Not a Palindrome"));
