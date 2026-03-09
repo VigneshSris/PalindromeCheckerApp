@@ -205,3 +205,47 @@ public class UseCase9PalindromeCheckerApp {
         scanner.close();
     }
 }
+// UseCase10PalindromeCheckerApp.java
+import java.util.Scanner;
+
+public class UseCase10PalindromeCheckerApp {
+
+    // Method to check palindrome ignoring case and spaces
+    public static boolean isPalindrome(String str) {
+        if (str == null) return false;
+        // Normalize string: remove spaces and convert to lowercase
+        String normalized = str.replaceAll("\\s+", "").toLowerCase();
+
+        int start = 0;
+        int end = normalized.length() - 1;
+
+        while (start < end) {
+            if (normalized.charAt(start) != normalized.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("=== UC10: Case-Insensitive & Space-Ignored Palindrome Checker ===");
+        System.out.print("Enter a string to check: ");
+        String input = scanner.nextLine();
+
+        boolean result = isPalindrome(input);
+
+        System.out.println("Input: " + input);
+        System.out.println("Result: " + (result ? "Palindrome" : "Not a Palindrome"));
+
+        System.out.println("\n======================================");
+        System.out.println("All Use Cases (UC1 - UC10) Executed Successfully!");
+        System.out.println("======================================");
+
+        scanner.close();
+    }
+}
